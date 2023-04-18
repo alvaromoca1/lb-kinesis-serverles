@@ -12,11 +12,11 @@ import { v4 as uuidv4 } from 'uuid'
       PartitionKey: uuidv4(),
       StreamName: labKinesisChanel,
     }).promise();
-    console.log("sendKinesis -->",sendKinesis);
+    console.log("sendKinesis * -->",sendKinesis);
  } catch (error) {
-  console.log("error--->",JSON.stringify(error))
+  console.log("error*--->",JSON.stringify(error))
  }
-  console.log("esto esta completado")
+  console.log("esto *esta completado")
   return "todo completo";
 
 };

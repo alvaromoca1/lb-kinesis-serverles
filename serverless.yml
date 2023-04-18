@@ -1,4 +1,4 @@
-service: example-amcServerless
+service: lb-kinesis-send
 
 package:
   individually: true

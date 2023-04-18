@@ -1,0 +1,28 @@
+import { responseSuccess, responseFail } from '../helpers/responses';
+
+const data = 
+    {
+        data: [
+            {
+                name: 'Alvaro Anderson',
+                lastName: 'Morales caballero',
+                work: 'developer',
+                company: 'NTTDATA',
+                description: 'data for test'
+            }
+        ],
+        message: "Data Enviada con exito"
+    }
+;
+export const getHelloWord = async(event) =>{
+    let response = null;
+    try {
+        response = responseSuccess(data,200);
+    } catch (error) {
+        response = responseFail({ 
+            data:[],
+            message: "Error inesperado"
+        },400);
+    }
+    return response;
+}

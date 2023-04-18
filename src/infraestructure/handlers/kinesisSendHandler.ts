@@ -7,17 +7,12 @@ import { v4 as uuidv4 } from 'uuid'
   const labKinesisChanel:any = process.env.LAB_CHANNEL_KINESIS;
 
  try {
-    await kinesis.putRecord({
+    const sendKinesis = await kinesis.putRecord({
       Data: JSON.stringify(event),
       PartitionKey: uuidv4(),
       StreamName: labKinesisChanel,
-    }, (err, data) => {
-      if (err) {
-        console.error(err);
-      } else {
-        console.log(`Datos enviados correctamente al canal ${labKinesisChanel}`,data);
-      }
-    });
+    }).promise();
+    console.log("sendKinesis -->",sendKinesis);
  } catch (error) {
   console.log("error--->",JSON.stringify(error))
  }

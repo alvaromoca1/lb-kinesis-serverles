@@ -43,6 +43,20 @@ functions:
     handler: src/infraestructure/handlers/kinesisSendHandler.kinesisSend
     name: ${self:custom.lamdbaKinesisSend}
     description: this function is for send kinesis
+    iamRoleStatementsName: role-${self:custom.lamdbaKinesisSend}
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - "kinesis:SubscribeToShard"
+          - "kinesis:ListShards"
+          - "kinesis:PutRecords"
+          - "kinesis:GetShardIterator"
+          - "kinesis:DescribeStream"
+          - "kinesis:DescribeStreamSummary"
+          - "kinesis:DescribeStreamConsumer"
+          - "kinesis:RegisterStreamConsumer"
+          - "kinesis:PutRecord"
+        Resource: '*'
 
 plugins:
   - serverless-esbuild

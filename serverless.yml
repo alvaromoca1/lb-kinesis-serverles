@@ -12,6 +12,7 @@ frameworkVersion: '3'
 custom:
   lamdbaHelloWord: lmb-${self:provider.stage}-${self:service}-helloword-01
   lamdbaKinesisSend: lmb-${self:provider.stage}-${self:service}-Data-send-01
+  chanelKinesisLab: labKinesisDemo
   esbuild:
     bundle: true
     minify: true
@@ -26,6 +27,8 @@ provider:
   region: us-east-1
   runtime: nodejs14.x
   stage: dev
+  environment:
+    LAB_CHANNEL_KINESIS : ${self:custom.chanelKinesisLab}
   
 functions:
   helloWord:

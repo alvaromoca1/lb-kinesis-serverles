@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
   const labKinesisChanel:any = process.env.LAB_CHANNEL_KINESIS;
 
  try {
-    kinesis.putRecord({
+    await kinesis.putRecord({
       Data: JSON.stringify(event),
       PartitionKey: uuidv4(),
       StreamName: labKinesisChanel,

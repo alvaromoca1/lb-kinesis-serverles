@@ -11,6 +11,7 @@ frameworkVersion: '3'
 
 custom:
   lamdbaHelloWord: lmb-${self:provider.stage}-${self:service}-helloword-01
+  lamdbaKinesisSend: lmb-${self:provider.stage}-${self:service}-Data-send-01
   esbuild:
     bundle: true
     minify: true
@@ -35,6 +36,10 @@ functions:
       - http:
           path: /helloword       # https://dominio.fulanito/{stage}/empleados
           method: get
+  kinesisSend:
+    handler: src/infraestructure/handlers/kinesisSendHandler.kinesisSend
+    name: ${self:custom.lamdbaKinesisSend}
+    description: this function is for send kinesis
 
 plugins:
   - serverless-esbuild
